@@ -1,0 +1,16 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 52px;
+    border-left: 1px solid #F3F3F3;
+}
+
+.avatar {
+    padding: 10px;
+    background: linear-gradient(133.87deg, #4D0AC7 -10.18%, #912EF2 108.59%);
+    border-radius: 4px;
+    color: #ffffff;
+    display: inline-block;
+}

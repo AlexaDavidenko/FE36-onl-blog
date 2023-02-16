@@ -1,58 +1,46 @@
 import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import {BrowserRouter, Route, Routes} from 'react-router-dom';
+import styles from './App.module.css';
+import './index.css';
+import {Blog} from './features/blog/Blog';
+import {Post} from './features/post/Post';
+import {Header} from './features/header/Header';
+import {Footer} from './features/footer/Footer';
+import {useAppDispatch, useAppSelector} from './app/hooks';
+import {selectTheme} from './features/theme-switcher/themeSlice';
+import {Theme} from './features/theme-switcher/Theme.enum';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    const theme = useAppSelector(selectTheme);
+
+    const isDarkTheme = theme === Theme.DARK;
+
+    const classNames = [
+        styles.App
+    ];
+
+    if (isDarkTheme) {
+        classNames.push('dark-theme');
+    }
+
+    return (
+        <div className={classNames.join(' ')}>
+            <BrowserRouter>
+                <Header />
+
+                <div className={styles.content}>
+
+                    <Routes>
+                        <Route path="/" element={<Blog />}></Route>
+                        <Route path="post/:id" element={<Post />}></Route>
+                        <Route path={'*'} element={<>Not found</>}></Route>
+                    </Routes>
+                </div>
+
+                <Footer />
+            </BrowserRouter>
+        </div>
+    );
 }
 
 export default App;

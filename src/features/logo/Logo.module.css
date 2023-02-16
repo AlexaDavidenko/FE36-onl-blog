@@ -1,0 +1,14 @@
+
+.logo {
+    display: inline-block;
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    background-image: url('./bg-logo.png');
+    background-repeat: no-repeat;
+    width: 166px;
+    line-height: 56px;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-indent: 22px;
+}

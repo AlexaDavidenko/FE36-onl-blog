@@ -1,0 +1,14 @@
+.header {
+    padding: 20px 32px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #ffffff;
+}
+
+:global(.dark-theme) .header {
+    background-color: #46454B;
+}
+
+.search {
+    flex: 1;
+}

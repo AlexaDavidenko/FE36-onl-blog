@@ -1,0 +1,46 @@
+.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.disabled {
+    pointer-events: none;
+    color: rgba(49, 48, 55, 0.3);
+}
+
+button {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.middleButtons {
+    display: flex;
+    gap: 32px;
+}
+
+.prev {
+    display: inline-block;
+    margin-left: 11px;
+}
+
+.next {
+    display: inline-block;
+    margin-right: 11px;
+}
+
+.current {
+    color: #6C1BDB;
+}
+
+:global(.dark-theme) button {
+    color: #ffffff;
+}
+
+:global(.dark-theme) button.current {
+    color: #6C1BDB;
+}

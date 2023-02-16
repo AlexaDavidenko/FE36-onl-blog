@@ -1,0 +1,20 @@
+.footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 34px 0;
+    border-top: 1px solid rgba(49, 48, 55, 0.1);
+    color: rgba(49, 48, 55, 0.5);
+}
+
+.copy {
+    display: flex;
+    align-items: center;
+}
+
+:global(.dark-theme) .footer {
+    color: #ffffff;
+}
+
+:global(.dark-theme) .footer {
+    border-top-color: rgba(255, 255, 255, 0.5);
+}

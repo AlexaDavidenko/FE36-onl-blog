@@ -1,0 +1,11 @@
+.post {
+    width: 300px;
+    border: 2px solid black;
+    overflow: hidden;
+}
+
+.post img {
+    width: 200px;
+    height: 300px;
+    display: block;
+}

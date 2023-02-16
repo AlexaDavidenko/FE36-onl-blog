@@ -1,0 +1,18 @@
+.App {
+    width: 100%;
+    color: #313037;
+    background-color: #F3F3F3;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+}
+
+:global(.dark-theme).App {
+    background-color: #313037;
+    color: #ffffff;
+}
