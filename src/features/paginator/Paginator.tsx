@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 import styles from './Paginator.module.css';
 import {paginate} from '../util/Util';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';

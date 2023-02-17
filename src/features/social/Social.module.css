@@ -1,0 +1,24 @@
+.wrapper {
+    padding: 0 100px;
+    margin-bottom: 72px;
+}
+
+.wrapper ul {
+    display: flex;
+    padding: 0;
+    list-style: none;
+    gap: 6px;
+}
+
+.wrapper ul .item {
+    font-size: 20px;
+    padding: 18px 40px;
+    background-color: rgba(49, 48, 55, 0.1);
+    color: #313037;
+    display: inline-block;
+}
+
+:global(.dark-theme) .wrapper ul .item {
+    background-color: #46454B;
+    color: #ffffff;
+}

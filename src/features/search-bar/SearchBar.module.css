@@ -1,0 +1,35 @@
+.wrapper {
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px;
+    position: relative;
+}
+.search {
+    flex: 1;
+    font-size: 30px;
+    border: none;
+    color: #313037;
+    background-color: transparent;
+    text-indent: 20px;
+}
+
+form {
+    flex: 1;
+    display: flex;
+}
+
+.searchButton {
+    position: absolute;
+    right: 30px;
+    top: 14px;
+    font-size: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+:global(.dark-theme) .searchButton,
+:global(.dark-theme) .search {
+    color: #ffffff;
+}

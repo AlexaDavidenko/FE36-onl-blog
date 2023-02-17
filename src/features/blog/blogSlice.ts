@@ -1,10 +1,9 @@
 import {IBlogState} from './IBlogState';
 import {createAsyncThunk, createSlice} from '@reduxjs/toolkit';
 import {RootState} from '../../app/store';
-import {fetchPosts} from './blogApi';
+import {fetchPosts, searchPosts} from './blogApi';
 import {Status} from '../util/Status.enum';
 import {FilterStatus} from './FilterStatus.enum';
-import {stat} from 'fs';
 import {IPostsParams} from './IPostParams';
 
 const initialState: IBlogState = {
@@ -15,7 +14,6 @@ const initialState: IBlogState = {
     filterStatus: FilterStatus.DAY,
     search: ''
 }
-
 
 export const postsAsync = createAsyncThunk(
   'blog/loadPosts',
@@ -29,12 +27,24 @@ export const postsAsync = createAsyncThunk(
     }
   }
 );
+export const searchAsync = createAsyncThunk(
+  'blog/searchPosts',
+  async (params: IPostsParams, thunkAPI) => {
+    try {
+      const response = await searchPosts(params);
+
+      return response;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e);
+    }
+  }
+);
 
 export const blogSlice = createSlice({
     name: 'blog',
     initialState,
     reducers: {
-        pageChange: (state: IBlogState, action) => {
+        setPage: (state: IBlogState, action) => {
             state.currentPage = action.payload;
         },
         setFilterStatus: (state: IBlogState, action) => {
@@ -52,11 +62,19 @@ export const blogSlice = createSlice({
             .addCase(postsAsync.fulfilled, (state: IBlogState, action) => {
                 state.status = Status.IDLE;
                 state.posts = action.payload;
-            });
+            })
+            .addCase(searchAsync.pending, (state: IBlogState) => {
+                state.status = Status.LOADING;
+            })
+            .addCase(searchAsync.fulfilled, (state: IBlogState, action) => {
+                state.status = Status.IDLE;
+                state.posts = action.payload;
+            })
+        ;
     }
 });
 
-export const { pageChange, setFilterStatus, setSearch } = blogSlice.actions;
+export const { setPage, setFilterStatus, setSearch } = blogSlice.actions;
 
 export const selectPosts = (state: RootState) => state.blog.posts;
 export const selectBlogStatus = (state: RootState) => state.blog.status;

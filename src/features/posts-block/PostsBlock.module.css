@@ -1,0 +1,15 @@
+.items {
+    flex: 1;
+    display: flex;
+}
+
+.paginator {
+    margin: 72px 0;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+}

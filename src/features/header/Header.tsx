@@ -1,5 +1,5 @@
 import {Logo} from '../logo/Logo';
-import {Search} from '../search/Search';
+import {SearchBar} from '../search-bar/SearchBar';
 import {User} from '../user/User';
 import styles from './Header.module.css';
 
@@ -9,7 +9,7 @@ export const Header = () => {
             <header className={styles.header}>
                 <Logo />
                 <div className={styles.search}>
-                    <Search />
+                    <SearchBar />
                 </div>
                 <User />
             </header>

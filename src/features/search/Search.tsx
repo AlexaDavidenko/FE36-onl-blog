@@ -1,21 +1,35 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 import styles from './Search.module.css';
 import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import {selectSearch, setSearch} from '../blog/blogSlice';
-import {useState} from 'react';
+import {searchAsync, selectCurrentPage, selectSearch, setPage} from '../blog/blogSlice';
+import {PostsBlock} from '../posts-block/PostsBlock';
+import {useEffect} from 'react';
 
 export const Search = () => {
     const search = useAppSelector(selectSearch);
+    const currentPage = useAppSelector(selectCurrentPage);
     const dispatch = useAppDispatch();
 
-    const [inputValue, setValue] = useState(search);
+    const postParams = {search, currentPage}
+    const loadPosts = () => {
+        dispatch(searchAsync(postParams));
+    };
+
+    useEffect(() => {
+        dispatch(setPage(1));
+        loadPosts();
+    }, []);
+
+    useEffect(() => {
+        loadPosts();
+    }, [search, currentPage]);
 
     return (
         <>
-            <div className={styles.wrapper}>
-                <input type="text" className={styles.search} value={inputValue} onChange={(e) => setValue(e.target.value)}/>
-                <button className={styles.searchButton} onClick={() => dispatch(setSearch(inputValue))} ><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
+            <div className={styles.wrapper + ' container'}>
+                <h1>Search results for `{search}`</h1>
+                <div className={styles.posts}>
+                    <PostsBlock />
+                </div>
             </div>
         </>
     )

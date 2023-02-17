@@ -12,7 +12,7 @@ export const PostPreview = ({title, description, image, id, createdAt}: IPost) =
                 <img src={image} alt={title} />
                 <div className={styles.description}>
                     <div className={styles.date}>{date}</div>
-                    <Link to={'post/' + id} className={styles.link}>{title}</Link>
+                    <Link to={'/post/' + id} className={styles.link}>{title}</Link>
                 </div>
             </div>
         </>

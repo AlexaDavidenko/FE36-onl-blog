@@ -1,33 +1,21 @@
 import styles from './Blog.module.css';
 import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import {
-    pageChange,
     postsAsync,
-    selectBlogStatus,
     selectCurrentPage,
     selectFilterStatus,
-    selectPageCount,
-    selectPosts, selectSearch, setFilterStatus
+    setFilterStatus
 } from './blogSlice';
 import {useEffect} from 'react';
-import {Status} from '../util/Status.enum';
-import {Loading} from '../loading/Loading';
-import {Posts} from '../posts/Posts';
-import {Paginator} from '../paginator/Paginator';
 import {Filter} from '../filter/FIlter';
-import {Simulate} from 'react-dom/test-utils';
-import load = Simulate.load;
+import {PostsBlock} from '../posts-block/PostsBlock';
 
 export const Blog = () => {
-    const loadingStatus = useAppSelector(selectBlogStatus);
-    const posts = useAppSelector(selectPosts);
     const currentPage = useAppSelector(selectCurrentPage);
-    const pageCount = useAppSelector(selectPageCount);
     const filterStatus = useAppSelector(selectFilterStatus);
-    const search = useAppSelector(selectSearch);
     const dispatch = useAppDispatch();
 
-    const postParams = {currentPage, filterStatus, search}
+    const postParams = {currentPage, filterStatus}
     const loadPosts = () => {
         dispatch(postsAsync(postParams));
     };
@@ -38,7 +26,7 @@ export const Blog = () => {
 
     useEffect(() => {
         loadPosts();
-    }, [currentPage, filterStatus, search]);
+    }, [currentPage, filterStatus]);
 
     return (
         <>
@@ -49,11 +37,7 @@ export const Blog = () => {
                 </div>
 
                 <div className={styles.blog}>
-                    {loadingStatus === Status.LOADING ? <Loading /> : <Posts posts={posts}/>}
-                </div>
-
-                <div className={styles.paginator}>
-                    <Paginator currentPage={currentPage} pageCount={pageCount} onChange={(page) => dispatch(pageChange(page))} />
+                    <PostsBlock />
                 </div>
             </div>
         </>

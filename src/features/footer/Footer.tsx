@@ -1,4 +1,3 @@
-import {Link} from 'react-router-dom';
 import {ThemeSwitcher} from '../theme-switcher/ThemeSwitcher';
 import styles from './Footer.module.css';
 
