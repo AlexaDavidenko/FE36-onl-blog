@@ -10,9 +10,15 @@ import {useAppSelector} from './app/hooks';
 import {selectTheme} from './features/theme-switcher/themeSlice';
 import {Theme} from './features/theme-switcher/Theme.enum';
 import {Search} from './features/search/Search';
+import Page404 from './features/404/Page404';
+import ProtectedRoute from './features/protected-route/ProtectedRoute';
+import {selectAuthenticated} from './features/user/userSlice';
+import SignIn from './features/sign-in/SignIn';
+import SignUp from './features/sign-up/SignUp';
 
 function App() {
     const theme = useAppSelector(selectTheme);
+    const isAuthenticated = useAppSelector(selectAuthenticated);
 
     const isDarkTheme = theme === Theme.DARK;
 
@@ -31,10 +37,14 @@ function App() {
 
                 <div className={styles.content}>
                     <Routes>
-                        <Route path="/" element={<Blog />}></Route>
-                        <Route path="post/:id" element={<Post />}></Route>
-                        <Route path="search" element={<Search />}></Route>
-                        <Route path={'*'} element={<>Not found</>}></Route>
+                        <Route path="sign-in" element={<SignIn />}></Route>
+                        <Route path="sign-up" element={<SignUp />}></Route>
+                        <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
+                            <Route path="/" element={<Blog />}></Route>
+                            <Route path="post/:id" element={<Post />}></Route>
+                            <Route path="search" element={<Search />}></Route>
+                            <Route path={'*'} element={<Page404 />}></Route>
+                        </Route>
                     </Routes>
                 </div>
 

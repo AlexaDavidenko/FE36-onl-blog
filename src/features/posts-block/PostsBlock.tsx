@@ -16,7 +16,9 @@ export const PostsBlock = () => {
     return (
         <>
             <div className={styles.items}>
-                {loadingStatus === Status.LOADING ? <div className={styles.loading}><Loading /></div> : <Posts posts={posts}/>}
+                {loadingStatus === Status.LOADING
+                    ? <div className={styles.loading}><Loading /></div>
+                    : <Posts items={posts}/>}
             </div>
 
             <div className={styles.paginator}>

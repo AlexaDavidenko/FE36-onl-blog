@@ -1,6 +1,6 @@
 import {Logo} from '../logo/Logo';
 import {SearchBar} from '../search-bar/SearchBar';
-import {User} from '../user/User';
+import User from '../user/User';
 import styles from './Header.module.css';
 
 export const Header = () => {

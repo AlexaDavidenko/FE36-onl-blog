@@ -13,7 +13,7 @@ export const PostsSimilar = () => {
 
     return (
         <>
-            <Posts posts={posts} />
+            <Posts items={posts} />
         </>
     )
 }

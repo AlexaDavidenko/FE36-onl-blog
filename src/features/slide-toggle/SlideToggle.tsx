@@ -1,6 +1,6 @@
 import styles from './SlideToggle.module.css';
 
-export const SlideToggle = ({checked, onChange}: {checked: boolean, onChange: () => {}}) => {
+const SlideToggle = ({checked, onChange}: {checked: boolean, onChange: () => {}}) => {
     return (
         <>
             <label>
@@ -14,3 +14,5 @@ export const SlideToggle = ({checked, onChange}: {checked: boolean, onChange: ()
         </>
     )
 }
+
+export default SlideToggle

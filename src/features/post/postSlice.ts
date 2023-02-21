@@ -33,6 +33,9 @@ export const postSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(postAsync.rejected, (state: IPostState) => {
+                state.status = Status.FAILED;
+            })
             .addCase(postAsync.pending, (state: IPostState) => {
                 state.status = Status.LOADING;
             })

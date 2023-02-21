@@ -9,14 +9,14 @@ export const Search = () => {
     const currentPage = useAppSelector(selectCurrentPage);
     const dispatch = useAppDispatch();
 
-    const postParams = {search, currentPage}
     const loadPosts = () => {
+        const postParams = {search, currentPage}
+
         dispatch(searchAsync(postParams));
     };
 
     useEffect(() => {
         dispatch(setPage(1));
-        loadPosts();
     }, []);
 
     useEffect(() => {

@@ -56,12 +56,18 @@ export const blogSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(postsAsync.rejected, (state: IBlogState) => {
+                state.status = Status.FAILED;
+            })
             .addCase(postsAsync.pending, (state: IBlogState) => {
                 state.status = Status.LOADING;
             })
             .addCase(postsAsync.fulfilled, (state: IBlogState, action) => {
                 state.status = Status.IDLE;
                 state.posts = action.payload;
+            })
+            .addCase(searchAsync.rejected, (state: IBlogState) => {
+                state.status = Status.FAILED;
             })
             .addCase(searchAsync.pending, (state: IBlogState) => {
                 state.status = Status.LOADING;

@@ -1,4 +1,4 @@
-import {ThemeSwitcher} from '../theme-switcher/ThemeSwitcher';
+import ThemeSwitcher from '../theme-switcher/ThemeSwitcher';
 import styles from './Footer.module.css';
 
 export const Footer = () => {

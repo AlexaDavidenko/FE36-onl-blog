@@ -2,9 +2,9 @@ import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import {selectTheme, toggleTheme} from './themeSlice';
 import {Theme} from './Theme.enum';
 import styles from './ThemeSwitcher.module.css';
-import {SlideToggle} from '../slide-toggle/SlideToggle';
+import SlideToggle from '../slide-toggle/SlideToggle';
 
-export const ThemeSwitcher = () => {
+const ThemeSwitcher = () => {
     const theme = useAppSelector(selectTheme);
     const dispatch = useAppDispatch();
 
@@ -20,3 +20,4 @@ export const ThemeSwitcher = () => {
         </>
     )
 }
+export default ThemeSwitcher;

@@ -26,3 +26,9 @@ export const paginate = (current: number, max: number) => {
 
     return {current, prev, next, items}
 };
+
+export const firstLetters = (userName: string) => {
+    const names = userName.split(' ');
+
+    return names.reduce((prev, current) => prev + current[0], '');
+}

@@ -1,6 +1,7 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faFacebookF, faTwitter} from '@fortawesome/free-brands-svg-icons';
 import styles from './Social.module.css';
+import {Link} from 'react-router-dom';
 
 export const Social = () => {
     const items = [
@@ -13,12 +14,12 @@ export const Social = () => {
             <div className={styles.wrapper}>
                 <ul>
                     {items.map((item) => {
-                        return <li>
-                            <a className={styles.item}
+                        return <li key={item.url}>
+                            <Link className={styles.item}
                                target="_blank"
-                               href={item.url}>
+                               to={item.url}>
                                 <FontAwesomeIcon icon={item.icon} />
-                            </a>
+                            </Link>
                         </li>;
                     })}
                 </ul>

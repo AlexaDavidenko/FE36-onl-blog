@@ -4,6 +4,7 @@ import themeReducer from '../features/theme-switcher/themeSlice';
 import blogReducer from '../features/blog/blogSlice';
 import postReducer from '../features/post/postSlice';
 import postsSimilarReducer from '../features/posts-similar/postsSimilarSlice';
+import userReducer from '../features/user/userSlice';
 
 export const store = configureStore({
     reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
         theme: themeReducer,
         blog: blogReducer,
         post: postReducer,
-        postsSimilar: postsSimilarReducer
+        postsSimilar: postsSimilarReducer,
+        user: userReducer
     },
 });
 

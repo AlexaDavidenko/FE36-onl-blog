@@ -6,40 +6,24 @@ interface IFilter {
     onChange: (value: FilterStatus) => void
 }
 export const Filter = ({currentFilter, onChange}: IFilter) => {
+    const statuses = [
+        {id: FilterStatus.DAY, text: 'Day'},
+        {id: FilterStatus.WEEK, text: 'Week'},
+        {id: FilterStatus.MONTH, text: 'Month'},
+        {id: FilterStatus.YEAR, text: 'Year'}
+    ];
     return (
         <>
-            <label className={styles.item}>
-                <input
-                    type="radio" name="period" value={FilterStatus.DAY}
-                    checked={currentFilter === FilterStatus.DAY}
-                    onChange={() => onChange(FilterStatus.DAY)}
-                />
-                <span>Day</span>
-            </label>
-            <label className={styles.item}>
-                <input
-                    type="radio" name="period" value={FilterStatus.WEEK}
-                    checked={currentFilter === FilterStatus.WEEK}
-                    onChange={() => onChange(FilterStatus.WEEK)}
-                />
-                <span>Week</span>
-            </label>
-            <label className={styles.item}>
-                <input
-                    type="radio" name="period" value={FilterStatus.MONTH}
-                    checked={currentFilter === FilterStatus.MONTH}
-                    onChange={() => onChange(FilterStatus.MONTH)}
-                />
-                <span>Month</span>
-            </label>
-            <label className={styles.item}>
-                <input
-                    type="radio" name="period" value={FilterStatus.YEAR}
-                    checked={currentFilter === FilterStatus.YEAR}
-                    onChange={() => onChange(FilterStatus.YEAR)}
-                />
-                <span>Year</span>
-            </label>
+            {statuses.map((status) => {
+                return <label key={status.id} className={styles.item}>
+                    <input
+                        type="radio" name="period" value={status.id}
+                        checked={currentFilter === status.id}
+                        onChange={() => onChange(status.id)}
+                    />
+                    <span>{status.text}</span>
+                </label>
+            })}
         </>
     )
 }

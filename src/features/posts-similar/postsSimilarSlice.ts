@@ -33,6 +33,9 @@ export const postsSimilarSlice = createSlice({
     },
     extraReducers: (builder) => {
         builder
+            .addCase(postsSimilarAsync.rejected, (state: IPostsSimilarState) => {
+                state.status = Status.FAILED;
+            })
             .addCase(postsSimilarAsync.pending, (state: IPostsSimilarState) => {
                 state.status = Status.LOADING;
             })

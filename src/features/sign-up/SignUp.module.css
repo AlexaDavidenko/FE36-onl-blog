@@ -1,0 +1,76 @@
+.form {
+    padding: 40px;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+    width: 624px;
+    margin: 0 auto;
+    border-radius: 16px;
+}
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    gap: 8px;
+    margin-bottom: 20px;
+}
+
+.form input {
+    padding: 18px 20px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: rgba(49, 48, 55, 0.5);
+    border: 1px solid rgba(49, 48, 55, 0.1);
+    border-radius: 4px;
+    background-color: transparent;
+}
+
+.form button {
+    padding: 16px 32px;
+    background: #6C1BDB;
+    border-radius: 4px;
+    color: #ffffff;
+    margin-top: 48px;
+}
+
+.password {
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.forgotPassword {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+    color: #313037;
+    text-decoration: none;
+}
+
+.signUp {
+    text-align: center;
+    color: #8D8E97;
+    margin-top: 24px;
+}
+
+.signUp a {
+    text-decoration: none;
+    color: #6C1BDB;
+}
+
+:global(.dark-theme) .form {
+    background-color: #46454B;
+}
+
+:global(.dark-theme) .form input {
+    border-color: rgba(49, 48, 55, 0.1);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark-theme) .forgotPassword {
+    color: #ffffff;
+}

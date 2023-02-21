@@ -26,7 +26,7 @@ export const Post = () => {
 
     return (
         <>
-            <div className={styles.post + ' post container'}>
+            <div className={styles.post + ' container'}>
                 <div className={styles.breadcrumbs}>
                     <ul>
                         <li><Link to="/">Home</Link></li>
