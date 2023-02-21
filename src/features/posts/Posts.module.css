@@ -2,4 +2,14 @@
     display: flex;
     flex-wrap: wrap;
     gap: 32px;
+    width: 100%;
+}
+
+.noItems {
+    align-self: center;
+    justify-content: center;
+    display: flex;
+    width: 100%;
+    font-size: 25px;
+    font-weight: bold;
 }
