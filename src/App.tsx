@@ -39,11 +39,11 @@ function App() {
                     <Routes>
                         <Route path="sign-in" element={<SignIn />}></Route>
                         <Route path="sign-up" element={<SignUp />}></Route>
+                        <Route path={'*'} element={<Page404 />}></Route>
                         <Route element={<ProtectedRoute isAuthenticated={isAuthenticated}/>}>
                             <Route path="/" element={<Blog />}></Route>
                             <Route path="post/:id" element={<Post />}></Route>
                             <Route path="search" element={<Search />}></Route>
-                            <Route path={'*'} element={<Page404 />}></Route>
                         </Route>
                     </Routes>
                 </div>

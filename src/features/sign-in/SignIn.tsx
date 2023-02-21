@@ -25,7 +25,7 @@ const SignIn = () => {
         if (isAuthenticated) {
             navigate('/');
         }
-    }, [userLoginStatus])
+    }, [isAuthenticated])
 
     return (
         <>

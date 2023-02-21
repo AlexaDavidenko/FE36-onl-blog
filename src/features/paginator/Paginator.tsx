@@ -18,6 +18,7 @@ export const Paginator = ({currentPage, pageCount, onChange}: IPaginator) => {
     };
 
     const pagination = paginate(currentPage, pageCount) || {items: []};
+    // [1,2,3,5, -Infinity, 10]
     const middleButtons = pagination.items.map((item, index) => {
         if (item === -Infinity) {
             return <span key={`${item}` + index}>...</span>;
@@ -31,7 +32,7 @@ export const Paginator = ({currentPage, pageCount, onChange}: IPaginator) => {
             <div className={styles.wrapper}>
                  <button onClick={onPrevClick} className={currentPage === 1 && styles.disabled || ''}>
                     <FontAwesomeIcon icon={faArrowLeft}/> <span className={styles.prev}>Prev</span>
-                </button>
+                 </button>
 
                 <div className={styles.middleButtons}>
                     {middleButtons}
