@@ -23,7 +23,7 @@ export const SearchBar = () => {
         <>
             <div className={styles.wrapper}>
                 <form onSubmit={onSubmit}>
-                    <input type="text" className={styles.search} value={inputValue} onChange={(e) => setValue(e.target.value)}/>
+                    <input type="text" placeholder="Search..." className={styles.search} value={inputValue} onChange={(e) => setValue(e.target.value)}/>
                     <button className={styles.searchButton}><FontAwesomeIcon icon={faMagnifyingGlass} /></button>
                 </form>
             </div>
