@@ -12,12 +12,14 @@ export async function fetchPost(id: number) {
     }
 }
 
-export async function fetchPosts({currentPage, filterStatus, limit = 12}: IPostsParams) {
+export async function fetchPosts({currentPage, filterStatus, sort, limit = 12}: IPostsParams) {
 
     const urlParams: Record<string, string> = {
         page: `${currentPage}`,
         filter: `${filterStatus}`,
-        limit: `${limit}`
+        limit: `${limit}`,
+        sortBy: 'title',
+        order: `${sort}`
     };
 
     const searchParams = new URLSearchParams(urlParams).toString();

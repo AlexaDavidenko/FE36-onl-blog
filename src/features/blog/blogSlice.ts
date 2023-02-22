@@ -5,6 +5,7 @@ import {fetchPosts, searchPosts} from './blogApi';
 import {Status} from '../util/Status.enum';
 import {FilterStatus} from './FilterStatus.enum';
 import {IPostsParams} from './IPostParams';
+import {Sort} from '../sort/Sort';
 
 const initialState: IBlogState = {
     currentPage: 1,
@@ -12,7 +13,8 @@ const initialState: IBlogState = {
     posts: [],
     status: Status.IDLE,
     filterStatus: FilterStatus.DAY,
-    search: ''
+    search: '',
+    sort: Sort.ASC
 }
 
 export const postsAsync = createAsyncThunk(
@@ -52,6 +54,9 @@ export const blogSlice = createSlice({
         },
         setSearch: (state: IBlogState, action) => {
             state.search = action.payload;
+        },
+        setSort: (state: IBlogState, action) => {
+            state.sort = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -80,7 +85,7 @@ export const blogSlice = createSlice({
     }
 });
 
-export const { setPage, setFilterStatus, setSearch } = blogSlice.actions;
+export const { setPage, setFilterStatus, setSearch, setSort } = blogSlice.actions;
 
 export const selectPosts = (state: RootState) => state.blog.posts;
 export const selectBlogStatus = (state: RootState) => state.blog.status;
@@ -88,5 +93,6 @@ export const selectCurrentPage = (state: RootState) => state.blog.currentPage;
 export const selectPageCount = (state: RootState) => state.blog.pageCount;
 export const selectFilterStatus = (state: RootState) => state.blog.filterStatus;
 export const selectSearch = (state: RootState) => state.blog.search;
+export const selectSort = (state: RootState) => state.blog.sort;
 
 export default blogSlice.reducer;

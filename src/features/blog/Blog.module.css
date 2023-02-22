@@ -13,4 +13,6 @@
 
 .panel {
     margin-bottom: 64px;
+    display: flex;
+    justify-content: space-between;
 }

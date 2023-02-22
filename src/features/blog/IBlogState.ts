@@ -1,6 +1,7 @@
 import {IPost} from '../post/IPost';
 import {Status} from '../util/Status.enum';
 import {FilterStatus} from './FilterStatus.enum';
+import {Sort} from '../sort/Sort';
 
 export interface IBlogState {
     currentPage: number;
@@ -9,4 +10,5 @@ export interface IBlogState {
     status: Status;
     filterStatus: FilterStatus;
     search: string;
+    sort: Sort;
 }

@@ -13,7 +13,7 @@ export const Filter = ({currentFilter, onChange}: IFilter) => {
         {id: FilterStatus.YEAR, text: 'Year'}
     ];
     return (
-        <>
+        <div>
             {statuses.map((status) => {
                 return <label key={status.id} className={styles.item}>
                     <input
@@ -24,6 +24,6 @@ export const Filter = ({currentFilter, onChange}: IFilter) => {
                     <span>{status.text}</span>
                 </label>
             })}
-        </>
+        </div>
     )
 }

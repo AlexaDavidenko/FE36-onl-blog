@@ -1,4 +1,5 @@
 .item {
+    margin-right: 16px;
 }
 
 .item span {
@@ -7,6 +8,7 @@
     line-height: 24px;
     border-radius: 4px;
     cursor: pointer;
+    background-color: rgba(49, 48, 55, 0.1);
 }
 
 .item input:checked + span {
@@ -15,4 +17,8 @@
 }
 .item input {
     display: none;
+}
+
+:global(.dark-theme) .item span {
+    background-color: #46454B;
 }

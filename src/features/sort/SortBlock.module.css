@@ -1,0 +1,31 @@
+.wrapper {
+    background-color: #ffffff;
+    padding: 16px 20px;
+    line-height: 24px;
+    border-radius: 4px;
+}
+
+.wrapper span {
+    margin-right: 10px;
+    color: rgba(49, 48, 55, 0.5);
+}
+
+.wrapper select {
+    border: none;
+    background-color: transparent;
+    font-size: 16px;
+    color: inherit;
+    font-family: inherit;
+}
+
+:global(.dark-theme) .wrapper {
+    background-color: #46454B;
+}
+
+:global(.dark-theme) .wrapper span {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+:global(.dark-theme) .wrapper option {
+    background-color: #46454B;
+}

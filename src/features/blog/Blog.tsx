@@ -1,17 +1,27 @@
 import styles from './Blog.module.css';
 import {useAppDispatch, useAppSelector} from '../../app/hooks';
-import {postsAsync, selectCurrentPage, selectFilterStatus, setFilterStatus, setPage} from './blogSlice';
+import {
+    postsAsync,
+    selectCurrentPage,
+    selectFilterStatus,
+    selectSort,
+    setFilterStatus,
+    setPage,
+    setSort
+} from './blogSlice';
 import {useEffect} from 'react';
 import {Filter} from '../filter/FIlter';
 import {PostsBlock} from '../posts-block/PostsBlock';
+import SortBlock from '../sort/SortBlock';
 
 export const Blog = () => {
     const currentPage = useAppSelector(selectCurrentPage);
     const filterStatus = useAppSelector(selectFilterStatus);
+    const sort = useAppSelector(selectSort);
     const dispatch = useAppDispatch();
 
     const loadPosts = () => {
-        const postParams = {currentPage, filterStatus}
+        const postParams = {currentPage, filterStatus, sort}
 
         dispatch(postsAsync(postParams));
     };
@@ -22,7 +32,7 @@ export const Blog = () => {
 
     useEffect(() => {
         loadPosts();
-    }, [currentPage, filterStatus]);
+    }, [currentPage, filterStatus, sort]);
 
     return (
         <>
@@ -30,6 +40,7 @@ export const Blog = () => {
                 <h1>Blog</h1>
                 <div className={styles.panel}>
                     <Filter currentFilter={filterStatus} onChange={(value) => dispatch(setFilterStatus(value))}/>
+                    <SortBlock currentSort={sort} onChange={(value) => dispatch(setSort(value))}/>
                 </div>
 
                 <div className={styles.blog}>

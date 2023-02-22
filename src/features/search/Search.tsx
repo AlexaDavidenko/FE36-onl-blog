@@ -3,6 +3,7 @@ import {useAppDispatch, useAppSelector} from '../../app/hooks';
 import {searchAsync, selectCurrentPage, selectSearch, setPage} from '../blog/blogSlice';
 import {PostsBlock} from '../posts-block/PostsBlock';
 import {useEffect} from 'react';
+import {Sort} from '../sort/Sort';
 
 export const Search = () => {
     const search = useAppSelector(selectSearch);
@@ -10,7 +11,7 @@ export const Search = () => {
     const dispatch = useAppDispatch();
 
     const loadPosts = () => {
-        const postParams = {search, currentPage}
+        const postParams = {search, currentPage, sort: Sort.ASC}
 
         dispatch(searchAsync(postParams));
     };
